@@ -9,6 +9,22 @@
     content="Ali Farashah - Computer Vision Engineer building practical AI systems for healthcare, autonomous mobility, industrial inspection, robotics, and aerospace."
   />
   <style>
+.contact-item a {
+  color: var(--white);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: 0.25s ease;
+}
+
+.contact-item a:hover {
+  color: var(--accent);
+}
+
+.contact-item i {
+  font-size: 1rem;
+}
     :root {
       --bg: #020617;
       --bg-soft: #0f172a;
@@ -450,6 +466,7 @@
       }
     }
   </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body>
   <header class="navbar">
@@ -739,12 +756,14 @@
           </p>
         </div>
 
-     <div class="contact-grid">
+   <div class="contact-grid">
   
   <div class="contact-item">
     <div class="label">Email</div>
     <div class="value">
-      <a href="mailto:ali@farashah.dev">ali@farashah.dev</a>
+      <a href="mailto:ali@farashah.dev" target="_blank">
+        <i class="fa-solid fa-envelope"></i> ali@farashah.dev
+      </a>
     </div>
   </div>
 
@@ -752,7 +771,7 @@
     <div class="label">LinkedIn</div>
     <div class="value">
       <a href="https://www.linkedin.com/in/ali-hosseini-farashah-6988a313a" target="_blank">
-        linkedin.com/in/ali-hosseini-farashah-6988a313a
+        <i class="fa-brands fa-linkedin"></i> LinkedIn Profile
       </a>
     </div>
   </div>
@@ -761,7 +780,7 @@
     <div class="label">GitHub</div>
     <div class="value">
       <a href="https://github.com/alifarashah67" target="_blank">
-        github.com/alifarashah67
+        <i class="fa-brands fa-github"></i> GitHub Profile
       </a>
     </div>
   </div>
