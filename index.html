@@ -1,19 +1,764 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Ali Farashah - AI Engineer</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ali Farashah | Computer Vision Engineer</title>
+  <meta
+    name="description"
+    content="Ali Farashah - Computer Vision Engineer building practical AI systems for healthcare, autonomous mobility, industrial inspection, robotics, and aerospace."
+  />
+  <style>
+    :root {
+      --bg: #020617;
+      --bg-soft: #0f172a;
+      --card: #111827;
+      --card-2: #0b1220;
+      --text: #e5eefc;
+      --muted: #94a3b8;
+      --line: #1e293b;
+      --accent: #22d3ee;
+      --accent-2: #38bdf8;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(34, 211, 238, 0.12), transparent 28%),
+        radial-gradient(circle at top right, rgba(56, 189, 248, 0.08), transparent 22%),
+        linear-gradient(to bottom, #020617, #0b1220, #020617);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1180px, 92%);
+      margin: 0 auto;
+    }
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+      background: rgba(2, 6, 23, 0.82);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+    }
+
+    .brand {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 0.3px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 26px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.96rem;
+      transition: 0.25s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .hero {
+      padding: 90px 0 70px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 9px 16px;
+      border: 1px solid rgba(34, 211, 238, 0.25);
+      background: rgba(34, 211, 238, 0.08);
+      border-radius: 999px;
+      color: var(--accent);
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 4.4rem);
+      line-height: 1.08;
+      color: var(--white);
+      margin-bottom: 18px;
+    }
+
+    .hero p.lead {
+      color: #c6d3e6;
+      font-size: 1.1rem;
+      max-width: 760px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 24px;
+      border-radius: 16px;
+      font-weight: 700;
+      transition: 0.25s ease;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #06202a;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      opacity: 0.95;
+    }
+
+    .btn-secondary {
+      border: 1px solid #334155;
+      color: var(--text);
+      background: transparent;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .hero-tags {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 26px;
+    }
+
+    .tag {
+      padding: 9px 14px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .hero-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .mini-card,
+    .card {
+      background: rgba(15, 23, 42, 0.88);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
+    }
+
+    .mini-card {
+      padding: 20px;
+    }
+
+    .mini-card .small {
+      color: var(--accent);
+      font-size: 0.85rem;
+      margin-bottom: 8px;
+    }
+
+    .mini-card h3 {
+      color: var(--white);
+      font-size: 1.15rem;
+      margin-bottom: 10px;
+    }
+
+    .mini-card p {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    section {
+      padding: 80px 0;
+    }
+
+    .section-head {
+      margin-bottom: 28px;
+    }
+
+    .section-head .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      max-width: 760px;
+    }
+
+    .domains-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      padding: 26px;
+      transition: 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(34, 211, 238, 0.35);
+    }
+
+    .card .subtitle {
+      color: var(--accent);
+      font-size: 0.9rem;
+      margin-bottom: 8px;
+    }
+
+    .card h3 {
+      color: var(--white);
+      margin-bottom: 12px;
+      font-size: 1.45rem;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 16px;
+    }
+
+    .card ul {
+      list-style: none;
+    }
+
+    .card li {
+      color: #c9d5e7;
+      margin-bottom: 8px;
+      font-size: 0.94rem;
+    }
+
+    .projects-section {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: rgba(15, 23, 42, 0.35);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--accent);
+      background: rgba(34, 211, 238, 0.08);
+      margin-bottom: 14px;
+    }
+
+    .stack {
+      color: #cbd5e1;
+      font-size: 0.9rem;
+      margin-top: 12px;
+    }
+
+    .project-actions {
+      margin-top: 18px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .small-btn {
+      display: inline-block;
+      padding: 10px 14px;
+      border-radius: 14px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      border: 1px solid #334155;
+      color: var(--text);
+    }
+
+    .small-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .small-btn.primary {
+      background: var(--accent);
+      color: #052531;
+      border-color: transparent;
+    }
+
+    .small-btn.primary:hover {
+      opacity: 0.94;
+      color: #052531;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 20px;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .skill {
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid #334155;
+      background: #020617;
+      color: #dce8f7;
+      font-size: 0.9rem;
+    }
+
+    .contact-box {
+      padding: 32px;
+      border-radius: 32px;
+      background: rgba(2, 6, 23, 0.92);
+      border: 1px solid var(--line);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .contact-item {
+      padding: 20px;
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      background: rgba(15, 23, 42, 0.75);
+    }
+
+    .contact-item .label {
+      color: var(--muted);
+      font-size: 0.88rem;
+      margin-bottom: 8px;
+    }
+
+    .contact-item .value {
+      color: var(--white);
+      font-weight: 700;
+      word-break: break-word;
+    }
+
+    footer {
+      padding: 28px 0 40px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      text-align: center;
+      border-top: 1px solid var(--line);
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .about-grid,
+      .domains-grid,
+      .projects-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-cards {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 70px;
+      }
+
+      .hero-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .btn,
+      .small-btn {
+        width: 100%;
+        text-align: center;
+      }
+
+      .hero-actions,
+      .project-actions {
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
-<body style="background:black; color:white; text-align:center; font-family:sans-serif;">
+<body>
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="#home" class="brand">Ali Farashah</a>
+      <nav class="nav-links">
+        <a href="#domains">Domains</a>
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-  <h1>Ali Farashah</h1>
-  <h2>AI & Computer Vision Engineer</h2>
+  <section class="hero" id="home">
+    <div class="container hero-grid">
+      <div>
+        <div class="badge">Computer Vision • Applied AI • High-Impact Industries</div>
+        <h1>Computer Vision Engineer for High-Impact Industries</h1>
+        <p class="lead">
+          Designing practical AI and computer vision systems for healthcare, autonomous mobility, industrial inspection, robotics, and aerospace applications.
+        </p>
 
-  <p>Building intelligent systems in medical AI, robotics, and autonomous systems.</p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary">Explore Projects</a>
+          <a href="#contact" class="btn btn-secondary">Contact Me</a>
+        </div>
 
-  <p>
-    <a href="https://github.com/alifarashah67" style="color:cyan;">GitHub</a> |
-    <a href="https://www.linkedin.com/in/ali-hosseini-farashah-6988a313a" style="color:cyan;">LinkedIn</a>
-  </p>
+        <div class="hero-tags">
+          <span class="tag">Berlin, Germany</span>
+          <span class="tag">Computer Vision</span>
+          <span class="tag">AI Deployment</span>
+        </div>
+      </div>
 
+      <div class="hero-cards">
+        <div class="mini-card">
+          <div class="small">Domain</div>
+          <h3>Medical AI</h3>
+          <p>X-ray / MRI / CT analysis and clinical vision workflows.</p>
+        </div>
+        <div class="mini-card">
+          <div class="small">Domain</div>
+          <h3>Autonomous Systems</h3>
+          <p>Perception systems for vehicles, tracking, and road understanding.</p>
+        </div>
+        <div class="mini-card">
+          <div class="small">Domain</div>
+          <h3>Industrial Vision</h3>
+          <p>Visual inspection, defect detection, and operational monitoring.</p>
+        </div>
+        <div class="mini-card">
+          <div class="small">Domain</div>
+          <h3>Robotics</h3>
+          <p>Vision-guided intelligence for tracking, navigation, and interaction.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="domains">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Domains</div>
+        <h2>Areas I Work In</h2>
+        <p>
+          Focused domain areas where I apply computer vision and AI to practical, real-world engineering problems.
+        </p>
+      </div>
+
+      <div class="domains-grid">
+        <div class="card">
+          <div class="subtitle">Healthcare & Diagnostics</div>
+          <h3>Medical AI</h3>
+          <p>
+            Computer vision systems for medical imaging, diagnostic assistance, segmentation, and classification across healthcare workflows.
+          </p>
+          <ul>
+            <li>• X-ray / MRI / CT analysis</li>
+            <li>• Segmentation & classification</li>
+            <li>• Clinical decision-support pipelines</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="subtitle">Vehicles & Perception</div>
+          <h3>Autonomous Systems</h3>
+          <p>
+            Perception pipelines for self-driving and intelligent mobility systems with detection, tracking, scene understanding, and safety analysis.
+          </p>
+          <ul>
+            <li>• Object & pedestrian detection</li>
+            <li>• Lane and road understanding</li>
+            <li>• Real-time perception systems</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="subtitle">Inspection & Monitoring</div>
+          <h3>Industrial Vision</h3>
+          <p>
+            AI-powered visual inspection for factories, product quality control, anomaly detection, and operational safety monitoring.
+          </p>
+          <ul>
+            <li>• Defect detection</li>
+            <li>• Quality assurance</li>
+            <li>• Visual safety monitoring</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="subtitle">Vision-Guided Intelligence</div>
+          <h3>Robotics</h3>
+          <p>
+            Vision modules for robots including object recognition, tracking, navigation, grasp analysis, and human-robot interaction.
+          </p>
+          <ul>
+            <li>• Object tracking</li>
+            <li>• Pose & grasp understanding</li>
+            <li>• Navigation support</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="subtitle">Space & Aerial Vision</div>
+          <h3>Aerospace</h3>
+          <p>
+            Advanced vision applications for drones, satellite imagery, astronomical images, and aerospace navigation tasks.
+          </p>
+          <ul>
+            <li>• Satellite image analysis</li>
+            <li>• Drone perception</li>
+            <li>• Astronomical pattern analysis</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="subtitle">Deployment & Engineering</div>
+          <h3>Applied AI Systems</h3>
+          <p>
+            End-to-end implementation from model development to APIs, deployment workflows, and practical product-oriented integration.
+          </p>
+          <ul>
+            <li>• FastAPI services</li>
+            <li>• Model deployment</li>
+            <li>• Scalable engineering workflows</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="projects-section" id="projects">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Projects</div>
+        <h2>Featured Work</h2>
+        <p>
+          A growing portfolio of vision systems and applied AI concepts built for practical use cases across multiple industries.
+        </p>
+      </div>
+
+      <div class="projects-grid">
+        <div class="card">
+          <span class="pill">Medical AI</span>
+          <h3>Medical Imaging Analysis Demo</h3>
+          <p>
+            Prototype for image classification and visual analysis in healthcare imaging workflows.
+          </p>
+          <div class="stack">Python · OpenCV · TensorFlow · FastAPI</div>
+          <div class="project-actions">
+            <a href="https://github.com/alifarashah67" target="_blank" class="small-btn">GitHub</a>
+            <a href="#" class="small-btn primary">Live Demo</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <span class="pill">Autonomous Systems</span>
+          <h3>Road Scene Detection System</h3>
+          <p>
+            Real-time detection pipeline for vehicles, pedestrians, and scene elements in driving environments.
+          </p>
+          <div class="stack">Python · YOLO · OpenCV · FastAPI</div>
+          <div class="project-actions">
+            <a href="https://github.com/alifarashah67" target="_blank" class="small-btn">GitHub</a>
+            <a href="#" class="small-btn primary">Live Demo</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <span class="pill">Industrial Vision</span>
+          <h3>Industrial Defect Inspection</h3>
+          <p>
+            Visual inspection concept for product defect detection and automated quality monitoring.
+          </p>
+          <div class="stack">Python · Computer Vision · CNN</div>
+          <div class="project-actions">
+            <a href="https://github.com/alifarashah67" target="_blank" class="small-btn">GitHub</a>
+            <a href="#" class="small-btn primary">Live Demo</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <span class="pill">Robotics</span>
+          <h3>Robotic Vision Tracking</h3>
+          <p>
+            Concept for object tracking and visual guidance in robotic environments.
+          </p>
+          <div class="stack">Python · OpenCV · Tracking</div>
+          <div class="project-actions">
+            <a href="https://github.com/alifarashah67" target="_blank" class="small-btn">GitHub</a>
+            <a href="#" class="small-btn primary">Live Demo</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <span class="pill">Aerospace</span>
+          <h3>Aerospace Image Analysis</h3>
+          <p>
+            Applied vision workflow for drone, satellite, or astronomical image analysis.
+          </p>
+          <div class="stack">Python · Deep Learning · Image Analysis</div>
+          <div class="project-actions">
+            <a href="https://github.com/alifarashah67" target="_blank" class="small-btn">GitHub</a>
+            <a href="#" class="small-btn primary">Live Demo</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <span class="pill">Deployment</span>
+          <h3>Applied Vision API</h3>
+          <p>
+            FastAPI-based service for exposing computer vision models as practical APIs.
+          </p>
+          <div class="stack">FastAPI · Docker · Python</div>
+          <div class="project-actions">
+            <a href="https://github.com/alifarashah67" target="_blank" class="small-btn">GitHub</a>
+            <a href="#" class="small-btn primary">Live Demo</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container about-grid">
+      <div class="card">
+        <div class="subtitle">About</div>
+        <h3>About Me</h3>
+        <p>
+          I am a computer vision engineer focused on building practical and scalable systems for image analysis, object detection, monitoring, and intelligent automation. My work is centered on high-impact domains including healthcare, autonomous systems, industrial inspection, robotics, and aerospace vision.
+        </p>
+        <p>
+          I work across the full development pipeline, from model design and experimentation to API deployment and product-oriented implementation.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="subtitle">Skills</div>
+        <h3>Core Stack</h3>
+        <div class="skills">
+          <span class="skill">Python</span>
+          <span class="skill">OpenCV</span>
+          <span class="skill">YOLO</span>
+          <span class="skill">TensorFlow</span>
+          <span class="skill">PyTorch</span>
+          <span class="skill">FastAPI</span>
+          <span class="skill">Docker</span>
+          <span class="skill">Deep Learning</span>
+          <span class="skill">Object Detection</span>
+          <span class="skill">Image Segmentation</span>
+          <span class="skill">Tracking</span>
+          <span class="skill">Model Deployment</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="contact-box">
+        <div class="section-head">
+          <div class="eyebrow">Contact</div>
+          <h2>Let’s Build Something Real</h2>
+          <p>
+            Open to computer vision and applied AI opportunities, collaborations, and technical project discussions in Germany and internationally.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-item">
+            <div class="label">Email</div>
+            <div class="value">ali@farashah.dev</div>
+          </div>
+          <div class="contact-item">
+            <div class="label">LinkedIn</div>
+            <div class="value">linkedin.com/in/ali-hosseini-farashah-6988a313a</div>
+          </div>
+          <div class="contact-item">
+            <div class="label">GitHub</div>
+            <div class="value">github.com/alifarashah67</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Ali Farashah — Computer Vision Engineer
+  </footer>
 </body>
 </html>
