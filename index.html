@@ -200,6 +200,43 @@
       font-size: 0.9rem;
     }
 
+    .domain-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(0, 220, 255, 0.18);
+  background:
+    linear-gradient(180deg, rgba(15, 23, 42, 0.95), rgba(8, 13, 25, 0.95)) padding-box,
+    linear-gradient(135deg, rgba(0, 220, 255, 0.45), rgba(60, 80, 255, 0.05)) border-box;
+  border-radius: 28px;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.domain-card:hover {
+  transform: translateY(-8px) scale(1.015);
+  border-color: rgba(0, 220, 255, 0.55);
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.35),
+    0 0 35px rgba(0, 220, 255, 0.16);
+}
+
+.domain-card::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  background: radial-gradient(
+    circle at var(--x, 50%) var(--y, 50%),
+    rgba(0, 220, 255, 0.18),
+    transparent 38%
+  );
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+.domain-card:hover::before {
+  opacity: 1;
+}
+
     .hero-cards {
       display: grid;
       grid-template-columns: 1fr 1fr;
